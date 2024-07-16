@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Photo Gallery
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,32 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Photo Gallery</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card id="card">
+    <ion-card-header>
+      <ion-card-title>Photo Gallery</ion-card-title>
+      <ion-card-subtitle>A aplication to take and save pictures from camera</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      This is a project example from ionic, i improve it a bit adding a good design.
+    </ion-card-content>
+  </ion-card>
+  <ion-button color="warning" (click)="takePicture('camera')">
+    <ion-icon name="id-card-outline"></ion-icon>
+    Take a picture
+  </ion-button>
+  <ion-button (click)="takePicture('library')">Select a picture</ion-button>
+  <ion-content class="infinite-list">
+    <ion-list>
+      <ion-item *ngFor="let item of imagensUrl; let index">
+        <img src="{{item}}" alt="{{item}}">
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll>
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
 </ion-content>
